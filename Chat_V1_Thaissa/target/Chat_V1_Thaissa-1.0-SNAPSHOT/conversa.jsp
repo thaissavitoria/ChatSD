@@ -4,6 +4,9 @@
     Author     : admlab
 --%>
 
+<%@page import="java.io.File" %>
+<%@page import="java.io.FileReader" %>
+<%@page import="java.io.BufferedReader" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,6 +15,16 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Conversa</h1>
+        <%
+            File arquivo = new File("C:\\Dados\\arquivo.txt");
+            FileReader leitor = new FileReader(arquivo);
+            BufferedReader buffer = new BufferedReader(leitor);
+            
+            while(buffer.ready()){
+                out.print(buffer.readLine());
+            }
+            
+            leitor.close();
+        %>
     </body>
 </html>
