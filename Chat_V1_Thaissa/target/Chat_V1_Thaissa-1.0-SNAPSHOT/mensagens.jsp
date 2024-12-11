@@ -37,12 +37,7 @@
             }
             
             msg+="<br>";  
-            
-            File arquivo= new File("C:\\Dados\\arquivo.txt");
-            FileWriter escritor = new FileWriter(arquivo,true);
-            
-            escritor.write(msg);
-            escritor.close();
+        
             
         }
     %>

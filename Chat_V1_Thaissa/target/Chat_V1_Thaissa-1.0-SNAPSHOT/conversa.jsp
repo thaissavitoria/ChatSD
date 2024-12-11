@@ -16,15 +16,7 @@
     </head>
     <body>
         <%
-            File arquivo = new File("C:\\Dados\\arquivo.txt");
-            FileReader leitor = new FileReader(arquivo);
-            BufferedReader buffer = new BufferedReader(leitor);
-            
-            while(buffer.ready()){
-                out.print(buffer.readLine());
-            }
-            
-            leitor.close();
+
         %>
     </body>
 </html>
