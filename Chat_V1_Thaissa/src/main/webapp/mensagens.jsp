@@ -3,8 +3,8 @@
     Created on : 17 de out. de 2024, 07:32:57
     Author     : admlab
 --%>
-<%@page import="java.io.File" %>
-<%@page import="java.io.FileWriter" %>
+<%@page import="pacote.RmiWebInterface" %>
+<%@page import="java.rmi.Naming" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -37,7 +37,17 @@
             }
             
             msg+="<br>";  
-        
+            
+            try{
+                RmiWebInterface objRmi = (RmiWebInterface)Naming.lookup("rmi://127.0.0.1:6666/ServidorWebChat");
+                
+                if(!objRmi.gravaMsg(msg)){
+                    out.print("Erro salvando a mensagem");
+                }
+            } catch(Exception e){
+                out.print("Erro no servidor ao salvar: "+e.getMessage());
+                e.printStackTrace();
+            }
             
         }
     %>

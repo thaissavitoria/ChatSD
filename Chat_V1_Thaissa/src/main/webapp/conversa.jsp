@@ -4,9 +4,8 @@
     Author     : admlab
 --%>
 
-<%@page import="java.io.File" %>
-<%@page import="java.io.FileReader" %>
-<%@page import="java.io.BufferedReader" %>
+<%@page import="pacote.RmiWebInterface" %>
+<%@page import="java.rmi.Naming" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,7 +15,14 @@
     </head>
     <body>
         <%
-
+            try{
+               RmiWebInterface objRmi=(RmiWebInterface)Naming.lookup("rmi://127.0.0.1:6666/ServidorWebChat");
+               
+               out.print(objRmi.recuperaMsg());
+            }catch(Exception e){
+                out.print("Erro ao recuperar mensagens: " + e.getMessage());
+                e.printStackTrace();
+            }
         %>
     </body>
 </html>
